@@ -25,7 +25,8 @@ def get_color_list(group_ids: List[int], alpha: float) -> RGBType:
 
     color_list = []
     for group_id in group_ids:
-        color_bar_fraction = current_counter[group_id] / group_length_counter[group_id] / 2  # Only use half the space
+        # Use the second half of the colorspace
+        color_bar_fraction = current_counter[group_id] / group_length_counter[group_id] / 2 + 0.5
         group_colormap = colormaps[cmap_names[group_id % len(cmap_names)]]
         color_list.append(group_colormap(color_bar_fraction))
         current_counter[group_id] += 1

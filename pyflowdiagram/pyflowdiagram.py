@@ -3,12 +3,12 @@ from typing import List, Optional
 
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import Figure
-from pyflowdiagram.visual_elements import draw_block, create_axes, draw_arrow
-from pyflowdiagram.colors import get_color_list
+from .visual_elements import draw_block, create_axes, draw_arrow
+from .colors import get_color_list
 
 
 def draw_process_flow(labels: List[str], rect_width: float, rect_height: float,
-                      group_ids: Optional[List[int]] = None) -> Figure:
+                      group_ids: Optional[List[int]] = None, dpi: int = 100) -> Figure:
     """
     Draw a linear process from diagram connecting all the labels in [labels], starting from the first element.
 
@@ -19,6 +19,7 @@ def draw_process_flow(labels: List[str], rect_width: float, rect_height: float,
     :param rect_height: height of each block within the process flow diagram (cm)
     :param group_ids: group ID corresponding to each label, used for coloring. Labels with the same group have will
     have similar coloring in the process flow graph
+    :param dpi: Set dpi for the figure. (Defaults to 300)
     :return: Matplotlib Figure containing the process flow
     """
     # Defaults to group 0 if no group_ids are provided
@@ -35,7 +36,7 @@ def draw_process_flow(labels: List[str], rect_width: float, rect_height: float,
 
     # width and height are in cm -> convert to inches before passing to [plt.figure()]
     fig: Figure
-    fig = plt.figure(figsize=(fig_width / 2.54, fig_height / 2.54))
+    fig = plt.figure(figsize=(fig_width / 2.54, fig_height / 2.54), dpi=dpi)
     ax = create_axes(fig, fig_width, fig_height)
 
     first_block_center_x = (fig_width - center_frame_width) / 2 + rect_width / 2

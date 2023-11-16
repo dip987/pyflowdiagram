@@ -21,7 +21,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: dip987
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: ESPILON1
   on:
     tags: true
     repo: dip987/pyflowdiagram
