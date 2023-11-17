@@ -1,4 +1,6 @@
 from typing import Tuple
+
+import matplotlib.pyplot as plt
 from matplotlib.pyplot import Rectangle, Axes, Figure
 
 
@@ -55,8 +57,10 @@ def create_axes(fig: Figure, fig_width: float, fig_height: float) -> Axes:
     ax.set_xlim(0, fig_width)
     ax.set_ylim(0, fig_height)
 
+    # Turn off ticks
     ax.tick_params(bottom=False, top=False, left=False, right=False)
     ax.set_facecolor('white')
+    plt.axis('off')
 
     SIDES = ['top', 'bottom', 'left', 'right']
     SPINE_COLOR = "midnightblue"
